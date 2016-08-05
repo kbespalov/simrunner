@@ -12,4 +12,27 @@ class colors:
 def print_list(title, items):
     print colors.HEADER + title + colors.ENDC
     for item in items:
-        print colors.WARNING + ' -- ' + item + colors.ENDC
+        print colors.WARNING + ' -- ' + str(item) + colors.ENDC
+
+
+def remove_double_spaces(string):
+    # remove unnecessary spaces
+    while True:
+        tmp = string.replace("  ", " ")
+        if string == tmp:
+            break
+        string = tmp
+
+
+def retry(attempts, on_error):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            while attempts > 0:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    on_error(e)
+
+        return wrapper
+
+    return decorator
