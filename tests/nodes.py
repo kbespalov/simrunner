@@ -5,7 +5,7 @@ import unittest
 
 class NodesTest(unittest.TestCase):
     def setUp(self):
-        self.node = Node('localhost', 'kbespalov', '181093')
+        self.node = Node('localhost', 'login', 'pass')
 
     def test_list_process(self):
         print_list('Processes', self.node.process_list())
